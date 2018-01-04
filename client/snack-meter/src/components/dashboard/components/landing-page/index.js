@@ -7,10 +7,49 @@ import steak from '../../../../assets/steak.jpg';
 import tacos from '../../../../assets/tacos.jpg';
 import './landing-page.css';
 export default class LandingPage extends Component {
+  constructor(){
+    super();
+    this.state={
+      url:hamburger,
+      qoute: "If music be the food of love , play on."
+    }
+    this.count=0;
+    this.urlList=[fish,hamburger,kebab,paella,steak,tacos];
+    this.qouteList=["If music be the food of love , play on.",
+    "Your diet is a bank account, Good food choices are good investments.",
+    "Ask not what you can do for your country. Ask what’s for lunch.",
+    "Life is a combination of magic and pasta.",
+    "Life is Uncertain, eat dessert first.",
+    "You don't need a silver fork to eat good food."];
+    this.changeBackground=this.changeBackground.bind(this);
+  }
+  
+  componentDidMount(){
+    setInterval(()=>{
+      document.querySelector(".landing__background").classList.remove("active");
+      setTimeout(()=>{
+        this.changeBackground();
+      }, 1500);
+    },10000);
+  }
+
+  changeBackground(){
+    document.querySelector(".landing__background").classList.add("active");
+    this.setState({url:this.urlList[this.count++%5], qoute: this.qouteList[this.count%5]});
+  }
+
   render() {
     return (
        <div className='landing__wrapper'>
-            <img className="landing__background" src={tacos} alt=""/>
+            <img className="landing__background active" src={this.state.url} alt=""/>
+            <div className="image-cover">
+            <main className='landing__border'>
+              <div className="landing__text">
+                {this.state.qoute}
+              </div>
+            </main>
+            </div>
+            
        </div>
     );
   }
