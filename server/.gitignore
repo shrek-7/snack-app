@@ -1,0 +1,3 @@
+#ignoring all the node_module files and folders
+
+node_modules/
