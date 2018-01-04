@@ -1,0 +1,22 @@
+.snack-header {
+    background-color: black;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.snack-header--text {
+    color: #fff;
+    font-family: cursive;
+}
+
+.eat-gif {
+    width: 90px;
+    height: 60px;
+}
+
+.hide {
+    opacity: 0;
+}
