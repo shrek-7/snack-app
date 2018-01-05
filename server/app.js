@@ -1,22 +1,22 @@
-let env = process.env.NODE_ENV || 'development';
-//env = 'prod';
-if (env === 'development') {
-    process.env.PORT = 3000;
-    process.env.MONGODB_URI = 'mongodb://localhost:27017/OlamApp';
-} else if (env === 'test') {
-    process.env.PORT = 3000;
-    process.env.MONGODB_URI = 'mongodb://localhost:27017/OlamAppTest';
-}/* else if (env === 'prod') {
-    process.env.PORT = 3000;
-    process.env.MONGODB_URI = 'mongodb://heroku_769tw7vc:8otrno9t2318l60l2hv2k3cfba@ds133290.mlab.com:33290/heroku_769tw7vc';
-}*/
+// let env = process.env.NODE_ENV || 'development';
+// //env = 'prod';
+// if (env === 'development') {
+//     process.env.PORT = 3000;
+//     process.env.MONGODB_URI = 'mongodb://localhost:27017/OlamApp';
+// } else if (env === 'test') {
+//     process.env.PORT = 3000;
+//     process.env.MONGODB_URI = 'mongodb://localhost:27017/OlamAppTest';
+// }/* else if (env === 'prod') {
+//     process.env.PORT = 3000;
+//     process.env.MONGODB_URI = 'mongodb://heroku_769tw7vc:8otrno9t2318l60l2hv2k3cfba@ds133290.mlab.com:33290/heroku_769tw7vc';
+// }*/
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const port = process.env.PORT;
+// const port = process.env.PORT;
 
-const db = require('./db/mongoose');
-const app = express();
+// const db = require('./db/mongoose');
+// const app = express();
 
 app.use(express.static(__dirname + '/public'));
 
