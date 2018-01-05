@@ -3,7 +3,7 @@ import fish from '../../../../assets/fish.jpg';
 import hamburger from '../../../../assets/hamburger.jpg';
 import kebab from '../../../../assets/kebab.jpg';
 import paella from '../../../../assets/paella.jpg';
-import steak from '../../../../assets/steak.jpg';
+import dessert from '../../../../assets/dessert.jpg';
 import tacos from '../../../../assets/tacos.jpg';
 import './landing-page.css';
 export default class LandingPage extends Component {
@@ -14,7 +14,7 @@ export default class LandingPage extends Component {
       qoute: "If music be the food of love , play on."
     }
     this.count=0;
-    this.urlList=[fish,hamburger,kebab,paella,steak,tacos];
+    this.urlList=[fish,hamburger,kebab,paella,dessert,tacos];
     this.qouteList=["If music be the food of love , play on.",
     "Your diet is a bank account, Good food choices are good investments.",
     "Ask not what you can do for your country. Ask what’s for lunch.",
@@ -46,6 +46,10 @@ export default class LandingPage extends Component {
             <main className='landing__border'>
               <div className="landing__text">
                 {this.state.qoute}
+              </div>
+              <div className="landing__scroll">
+                You can proceed if you are motivated enough.
+                <i class="material-icons">mood</i>
               </div>
             </main>
             </div>
