@@ -5,6 +5,7 @@ import kebab from '../../../../assets/kebab.jpg';
 import paella from '../../../../assets/paella.jpg';
 import dessert from '../../../../assets/dessert.jpg';
 import tacos from '../../../../assets/tacos.jpg';
+import $ from 'jquery';
 import './landing-page.css';
 export default class LandingPage extends Component {
   constructor(){
@@ -21,6 +22,7 @@ export default class LandingPage extends Component {
     "Life is a combination of magic and pasta.",
     "Life is Uncertain, eat dessert first.",
     "You don't need a silver fork to eat good food."];
+    this.scrollTo=this.scrollTo.bind(this);
     this.changeBackground=this.changeBackground.bind(this);
   }
   
@@ -38,6 +40,17 @@ export default class LandingPage extends Component {
     this.setState({url:this.urlList[this.count++%5], qoute: this.qouteList[this.count%5]});
   }
 
+  scrollTo(){
+    $('html, body').animate({
+      scrollTop: $("#main").offset().top
+  }, 1500);
+
+  setTimeout(()=>{
+    document.querySelector('.landing__wrapper').classList.add('display-none')}
+  ,2000);
+
+  }
+
   render() {
     return (
        <div className='landing__wrapper'>
@@ -47,7 +60,7 @@ export default class LandingPage extends Component {
               <div className="landing__text">
                 {this.state.qoute}
               </div>
-              <div className="landing__scroll">
+              <div className="landing__scroll" onClick={this.scrollTo}>
                 You can proceed if you are motivated enough.
                 <i class="material-icons">mood</i>
               </div>
