@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
 }
 
 .snack-header--text {
@@ -14,7 +13,7 @@
 
 .eat-gif {
     width: 90px;
-    height: 60px;
+    height: 52px;
 }
 
 .hide {

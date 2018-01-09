@@ -11,7 +11,7 @@ export default class LandingPage extends Component {
   constructor(){
     super();
     this.state={
-      url:hamburger,
+      url:fish,
       qoute: "If music be the food of love , play on."
     }
     this.count=0;
@@ -37,17 +37,18 @@ export default class LandingPage extends Component {
 
   changeBackground(){
     document.querySelector(".landing__background").classList.add("active");
-    this.setState({url:this.urlList[this.count++%5], qoute: this.qouteList[this.count%5]});
+    this.count=(++this.count)%5;
+    this.setState({url:this.urlList[this.count], qoute: this.qouteList[this.count]});
   }
 
   scrollTo(){
     $('html, body').animate({
-      scrollTop: $("#main").offset().top
+      scrollTop: $("#header").offset().top
   }, 1500);
 
-  setTimeout(()=>{
-    document.querySelector('.landing__wrapper').classList.add('display-none')}
-  ,2000);
+  // setTimeout(()=>{
+  //   document.querySelector('.landing__wrapper').classList.add('display-none')}
+  // ,2000);
 
   }
 
