@@ -12,15 +12,18 @@ export default class ItemTile extends Component{
         return(
         <div className="tile">
             <div className="tile__image">
-            <img className="" src={this.props.src} alt=""/>
-            <div className="tile__image--cover"></div>
+                <img className="" src={this.props.src} alt=""/>
+                <div className="tile__image--cover"></div>
+            </div>
+            <div className="tile__heading">
+               <div>{this.props.name}</div>
+               <div>
+                    <button>upvote</button>
+               </div>
             </div>
             <div className="tile__description">
-                <div className="tile__element">one</div>
-                <div className="vl"></div>
-                <div className="tile__element">two</div>
-                <div className="vl"></div>
-                <div className="tile__element">three</div>
+                <i className="material-icons favorite">thumb_up</i>
+                <div className="tile__element">103</div>
             </div>
         </div>
         );

@@ -63,7 +63,7 @@ export default class LandingPage extends Component {
               </div>
               <div className="landing__scroll" onClick={this.scrollTo}>
                 You can proceed if you are motivated enough.
-                <i class="material-icons">mood</i>
+                <i className="material-icons">mood</i>
               </div>
             </main>
             </div>
