@@ -1,23 +1,23 @@
-// let env = process.env.NODE_ENV || 'development';
-// //env = 'prod';
-// if (env === 'development') {
-//     process.env.PORT = 3000;
-//     process.env.MONGODB_URI = 'mongodb://localhost:27017/OlamApp';
-// } else if (env === 'test') {
-//     process.env.PORT = 3000;
-//     process.env.MONGODB_URI = 'mongodb://localhost:27017/OlamAppTest';
-// }/* else if (env === 'prod') {
-//     process.env.PORT = 3000;
-//     process.env.MONGODB_URI = 'mongodb://heroku_769tw7vc:8otrno9t2318l60l2hv2k3cfba@ds133290.mlab.com:33290/heroku_769tw7vc';
-// }*/
+//setting environment variables
+let env = process.env.NODE_ENV || 'development';
+process.env.PORT = 3000;
+process.env.MONGODB_URI = 'mongodb://localhost:27017/snack-app';
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
-// const port = process.env.PORT;
+const port = process.env.PORT;
 
-// const db = require('./db/mongoose');
-// const app = express();
+const food = require('./routes/food');
 
+const db = require('./db/mongoose');
+const app = express();
+
+//all the api calls
+app.use('/api/food', food);
+
+
+// to load the index.html from public
 app.use(express.static(__dirname + '/public'));
 
 // catch 404 and forward to error handler
@@ -37,6 +37,7 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.send({e: err});
 });
+
 
 app.listen(port, (e) => {
     if (!e) {
