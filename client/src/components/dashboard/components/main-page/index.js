@@ -15,7 +15,7 @@ export default class MainPage extends Component {
     super(props)
     this.state={
       data:[
-        {name:"Dominoes"},{name:"Pizza Hut"}
+        {name:"Dominoes"},{name:"Pizza Hut"},{name:"MacDonalds"}
       ]
     }
     this.renderTile=this.renderTile.bind(this);
@@ -30,7 +30,7 @@ export default class MainPage extends Component {
     return(
       this.state.data.map((item)=> {
         return(
-          <ItemTile src={kebab} name={item.name} />
+          <ItemTile src={steak} name={item.name} />
         );
       })
     );
