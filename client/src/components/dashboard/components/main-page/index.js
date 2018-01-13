@@ -15,7 +15,6 @@ export default class MainPage extends Component {
     super(props)
     this.state={
       data:[
-        {name:"Dominoes"},{name:"Pizza Hut"}
       ]
     }
     this.renderTile=this.renderTile.bind(this);
