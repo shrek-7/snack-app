@@ -10,7 +10,9 @@ var foodSchema = mongoose.Schema({
         require: true
     },
     description : String,
-    image: Buffer,
+    img: {
+        data: Buffer, contentType: String 
+    },
     votes: Number,
     created: { 
         type: Date,

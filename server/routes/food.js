@@ -14,8 +14,11 @@ const { Food } = require('./../model/food');
 
 router.get('/', function(req, res){
     Food.find(function (err, foods) {
-        if (err) return console.error(err);
-        console.log(foods);
+        if (err) {
+            res.send(err);
+            return console.error(err);
+        }
+        res.json(foods);
     })
 });
 

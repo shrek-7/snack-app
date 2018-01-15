@@ -30,7 +30,8 @@ export default class MainPage extends Component {
   componentDidMount(){
     //make api call
     axios.get('/api/food').then((defs)=>{
-      this.setState({data:[...this.state.data,defs.data]});
+      console.log("hello");
+      this.setState({data:[...this.state.data,...defs.data]});
     });
 
     axios.get('/api/drinks').then((defs)=>{
@@ -41,7 +42,7 @@ export default class MainPage extends Component {
     return(
       this.state.data.map((item)=> {
         return(
-          <ItemTile src={steak} name={item.name} />
+          <ItemTile data={item} />
         );
       })
     );
