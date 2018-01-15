@@ -22,7 +22,7 @@ export default class MainPage extends Component {
       data:[
         {name:"Dominoes"},{name:"Pizza Hut"},{name:"MacDonalds"}
       ],
-      drinks: [{src:bud,title:"budweiser magnum(strong)"},{src:biraW,title:"bira white(light)"},{src:carls,title:"Carlsberg elephant(strong)"}]
+      drinks: [{src:bud,name:"budweiser magnum(strong)"},{src:biraW,name:"bira white(light)"},{src:carls,name:"Carlsberg elephant(strong)"}]
     }
     this.renderTile=this.renderTile.bind(this);
     this.renderDrinks=this.renderDrinks.bind(this);
@@ -51,7 +51,7 @@ export default class MainPage extends Component {
     return(
       this.state.drinks.map((item)=> {
         return(
-          <DrinksTile src={item.src} title={item.title}/>
+          <DrinksTile data={item}/>
         );
       })
     );

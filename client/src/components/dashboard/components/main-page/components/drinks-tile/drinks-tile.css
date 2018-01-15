@@ -23,3 +23,20 @@
     font-variant: small-caps;
     width: 60%;
 }
+
+.tile-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+}
+
+.tile-button>div {
+    font-family: fantasy;
+}
+
+.up-arrow {
+    color: lawngreen;
+    margin-top: 5px;
+    font-size: 24px;
+}
