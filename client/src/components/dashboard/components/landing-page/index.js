@@ -46,9 +46,9 @@ export default class LandingPage extends Component {
       scrollTop: $("#header").offset().top
   }, 1500);
 
-  // setTimeout(()=>{
-  //   document.querySelector('.landing__wrapper').classList.add('display-none')}
-  // ,2000);
+  setTimeout(()=>{
+    document.querySelector('.landing__wrapper').classList.add('display-none')}
+  ,2000);
 
   }
 

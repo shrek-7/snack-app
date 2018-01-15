@@ -6,4 +6,26 @@
 .tile-wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+.snacks-wrapper {
+    display: flex;
+}
+
+.snacks-wrapper__food {
+    width: 65%;
+    padding: 20px 10px;
+}
+
+.snacks-wrapper__drinks {
+    width: 30%;
+    padding: 20px;
+}
+
+.separator {
+    width: 1px;
+    height: 100vh;
+    background-color: #000;
+    background: linear-gradient(0deg, #fff, black 40%, #fff);
 }
