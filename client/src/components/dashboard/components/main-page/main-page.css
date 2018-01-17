@@ -6,11 +6,13 @@
 .tile-wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    height: 100%;
+    /* justify-content: center; */
 }
 
 .snacks-wrapper {
     display: flex;
+    margin-top: 55px;
 }
 
 .snacks-wrapper__food {
@@ -28,4 +30,55 @@
     height: 100vh;
     background-color: #000;
     background: linear-gradient(0deg, #fff, black 40%, #fff);
+}
+
+.navigation__wrap {
+    display: none;
+}
+
+.nav__snacks,
+.nav__drinks {
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    background: lightgray;
+    cursor: pointer;
+}
+
+.nav__active {
+    background: #fff;
+}
+
+@media screen and (max-width: 1000px) {
+    .snacks-wrapper {
+        display: block;
+        margin-top: 49px;
+    }
+    .separator {
+        display: none;
+    }
+    .snacks-wrapper__food {
+        border-bottom: 1px solid grey;
+        padding-top: 50px;
+    }
+    .snacks-wrapper__food,
+    .snacks-wrapper__drinks {
+        width: 80%;
+        margin: auto;
+    }
+    .tile {
+        margin-bottom: 10px;
+    }
+    .navigation__wrap {
+        display: flex;
+        justify-content: space-around;
+        border-bottom: 1px solid grey;
+        position: fixed;
+        width: 100%;
+        z-index: 9;
+        box-shadow: 1px 1px 5px;
+    }
+    .tile-wrapper {
+        justify-content: center;
+    }
 }
