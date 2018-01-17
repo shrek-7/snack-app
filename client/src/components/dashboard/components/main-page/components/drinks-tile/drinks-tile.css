@@ -22,6 +22,7 @@
     font-family: cursive;
     font-variant: small-caps;
     width: 60%;
+    padding: 5px;
 }
 
 .tile-button {
@@ -39,4 +40,14 @@
     color: lawngreen;
     margin-top: 5px;
     font-size: 24px;
+}
+
+@media screen and (max-width: 420px) {
+    .tile-image {
+        height: 80px;
+        width: 60px;
+    }
+    .tile-description {
+        font-size: 15px;
+    }
 }

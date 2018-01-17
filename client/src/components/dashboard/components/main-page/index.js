@@ -91,7 +91,7 @@ export default class MainPage extends Component {
             <ItemTile src={kebab} />
             <ItemTile src={steak} /> */}
           </div>
-          <div className="separator"></div>
+          {/* <div className="separator"></div> */}
           <div className="snacks-wrapper__drinks" id="drinks">
             {this.renderDrinks()}
           </div>
