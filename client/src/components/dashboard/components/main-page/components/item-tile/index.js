@@ -37,7 +37,7 @@ export default class ItemTile extends Component{
             </div>
             <div className="tile__description">
                 <i className="material-icons favorite">thumb_up</i>
-                <div className="tile__element">{this.props.data.vot}</div>
+                <div className="tile__element">{this.props.data.votes}</div>
             </div>
         </div>
         );
