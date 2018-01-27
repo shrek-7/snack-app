@@ -1,7 +1,4 @@
-//setting environment variables
-let env = process.env.NODE_ENV || 'development';
-process.env.PORT = 3000;
-process.env.MONGODB_URI = 'mongodb://localhost:27017/snack-app';
+require('./config/config');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -9,12 +6,16 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT;
 
 const food = require('./routes/food');
+const user = require('./routes/user');
 
 const db = require('./db/mongoose');
 const app = express();
 
+app.use(bodyParser.json());
+
 //all the api calls
 app.use('/api/food', food);
+app.use('/api/user', user);
 
 
 // to load the index.html from public
