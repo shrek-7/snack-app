@@ -36,11 +36,15 @@ export default class MainPage extends Component {
     axios.get('/api/food').then((defs)=>{
       console.log("hello");
       this.setState({data:[...this.state.data,...defs.data]});
+    }).catch((error) => {
+      console.log(error);
     });
 
     axios.get('/api/drinks').then((defs)=>{
       this.setState({drinks:[...this.state.drinks,defs.data]});
-    });
+    }).catch((error) => {
+      console.log(error);
+    })
   }
   renderTile(){
     return(
