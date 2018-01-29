@@ -26,3 +26,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+/* find below all the common style classes which will be used throughout the app */
+
+.display-show{
+  display: block;
+}
+
+.display-none{
+  display: none;
+}

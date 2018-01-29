@@ -1,14 +1,34 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { saveToken } from './../../../../../../actions/token';
+
 import './item-tile.css';
 
-export default class ItemTile extends Component{
+class ItemTile extends Component{
     constructor(props){
-        super(props)
+        super(props);
+
+        this.state = {
+            "invokeRegister": false
+        }
+
+        this.upvoteItem = this.upvoteItem.bind(this);
         this.base10_to_base64 = this._arrayBufferToBase64.bind(this);
     }
     componentWillReceiveProps(nextProps){
         this.props=nextProps;
     }
+
+    upvoteItem(){
+        if(this.props.token){
+            console.log("post request");
+        }
+        else{
+            this.setState({invokeRegister: true});
+        }
+    }
+
     _arrayBufferToBase64( buffer ) {
         var binary = '';
         var bytes = new Uint8Array( buffer );
@@ -25,13 +45,18 @@ export default class ItemTile extends Component{
         }
         return(
         <div className="tile">
+            <div className={`invoke-register ${this.state.invokeRegister ? "display-block" : "display-none"}`}>
+                <Link to={{pathname: '/register'}}>
+                    Register
+                </Link>
+            </div>
             <div className="tile__image">
                 <img className="" src={imgSrc} alt=""/>
                 <div className="tile__image--cover"></div>
             </div>
             <div className="tile__heading">
                <div>{this.props.data.name}</div>
-               <div>
+               <div onClick={this.upvoteItem}>
                     <button>upvote</button>
                </div>
             </div>
@@ -43,4 +68,14 @@ export default class ItemTile extends Component{
         );
     }
 }
+
+
+function mapStateToProps(state) {
+    return {
+        token: state.token
+  };
+}
+
+export default connect(mapStateToProps, { })(ItemTile);
+
 
