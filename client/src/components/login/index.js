@@ -1,5 +1,5 @@
 /**
- * Created by Rubel on 28/01/18.
+ * Created by Rubel on 04/02/18.
  */
 import React, { Component } from 'react';
 import axios from 'axios';
@@ -7,30 +7,26 @@ import { connect } from 'react-redux';
 
 import { saveToken } from './../../actions/token';
 
-import './register.css';
+import './login.css';
 
-class Register extends Component {
+class Login extends Component {
     constructor(props){
         super(props)
         this.state={
-            firstName: { value: '', error: ''},
-            lastName: { value: '', error: ''},
             email: { value: '', error: ''},
             password: { value: '', error: ''}
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.registerUser = this.registerUser.bind(this);
+        this.loginUser = this.loginUser.bind(this);
     }
 
     handleInputChange(event){
         this.setState({[event.target.name]: { value: event.target.value, error: ''}})
     }
 
-    registerUser() {
-        axios.post('/api/user', {
-            firstName: this.state.firstName.value,
-            lastName: this.state.lastName.value,
+    loginUser() {
+        axios.post('/api/user/login', {
             email: this.state.email.value,
             password: this.state.password.value
         })
@@ -39,23 +35,21 @@ class Register extends Component {
             this.props.saveToken(response.headers['x-auth']);
             this.props.history.push('/');
         })
-        .catch((error) => {
-            console.log(error);
+        .catch((e) => {
+            if(e.response.data === "email not registered"){
+                this.props.history.push('/register');
+            }
         });
     }
 
     render() {
         return (
             <div>
-                <span>First Name:</span>
-                <input type="text" name="firstName" value={this.state.firstName.value} onChange={this.handleInputChange} />
-                <span>Last Name:</span>
-                <input type='text' name='lastName' value={this.state.lastName.value} onChange={this.handleInputChange} />
                 <span>Email:</span>
                 <input type="text" name="email" value={this.state.email.value} onChange={this.handleInputChange} />
                 <span>Password:</span>
                 <input type="password" name="password" value={this.state.password.value} onChange={this.handleInputChange} />
-                <button onClick={this.registerUser}>Register</button>
+                <button onClick={this.loginUser}>Login</button>
             </div> 
         );
     }
@@ -67,6 +61,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { saveToken })(Register);
+export default connect(mapStateToProps, { saveToken })(Login);
 
 

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { saveToken } from './../../../../../../actions/token';
 
 import './item-tile.css';
 
@@ -46,9 +45,11 @@ class ItemTile extends Component{
         return(
         <div className="tile">
             <div className={`invoke-register ${this.state.invokeRegister ? "display-block" : "display-none"}`}>
-                <Link to={{pathname: '/register'}}>
-                    Register
-                </Link>
+                <div className="invoke-register__text-cont">
+                    <Link to={{pathname: '/register'}}>
+                        Register
+                    </Link>
+                </div>
             </div>
             <div className="tile__image">
                 <img className="" src={imgSrc} alt=""/>

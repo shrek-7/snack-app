@@ -12,7 +12,7 @@ var {authenticate} = require('./../middleware/authenticate');
 
 //registering the user for first time
 router.post('/', function(req, res){
-    var body = _.pick(req.body, ['email', 'password']);
+    var body = _.pick(req.body, ['email', 'password', 'firstName', 'lastName']);
     var user = new User(body);
 
     user.save().then(() => {
@@ -24,7 +24,7 @@ router.post('/', function(req, res){
     })
 });
 
-//login the user with cradentials and generating token based on password and secret test
+//login the user with cradentials and generating token based on password and secret text
 router.post('/login', (req,res) => {
     var body = _.pick(req.body, ['email','password']);
     
@@ -33,12 +33,12 @@ router.post('/login', (req,res) => {
             res.header('x-auth', token).send(user);
         })
     }).catch((e) => {
-        res.status(400).send();
+        res.status(400).send("email not registered");
     })
 })
 
 //logout the user by removing the token
-router.delete('/delete', authenticate, (req, res) => {
+router.delete('/logout', authenticate, (req, res) => {
     req.user.removeToken(req.token).then(() => {
         res.status(200).send();
     }).catch((e) => {

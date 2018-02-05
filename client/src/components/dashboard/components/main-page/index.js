@@ -6,9 +6,9 @@ import ItemTile from './components/item-tile';
 import DrinksTile from './components/drinks-tile';
 import Header from '../../../header';
 
-import dessert from '../../../../assets/dessert.jpg';
-import kebab from '../../../../assets/kebab.jpg';
-import steak from '../../../../assets/steak.jpg';
+// import dessert from '../../../../assets/dessert.jpg';
+// import kebab from '../../../../assets/kebab.jpg';
+// import steak from '../../../../assets/steak.jpg';
 
 import bud from '../../../../assets/bud.jpeg';
 import biraW from '../../../../assets/bira-white.jpg';
@@ -48,18 +48,18 @@ export default class MainPage extends Component {
   }
   renderTile(){
     return(
-      this.state.data.map((item)=> {
+      this.state.data.map((item,index)=> {
         return(
-          <ItemTile data={item} />
+          <ItemTile key={index} data={item} />
         );
       })
     );
   }
   renderDrinks(){
     return(
-      this.state.drinks.map((item)=> {
+      this.state.drinks.map((item,index)=> {
         return(
-          <DrinksTile data={item}/>
+          <DrinksTile key={index} data={item}/>
         );
       })
     );

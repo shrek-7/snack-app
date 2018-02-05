@@ -107,3 +107,14 @@ button:hover {
         height: 19em;
     } */
 }
+
+/* styling for all the invoke register classes */
+.invoke-register{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #5b5b5b;
+    z-index: 9;
+}

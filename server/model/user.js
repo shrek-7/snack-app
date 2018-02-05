@@ -8,6 +8,13 @@ const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 
 var userSchema = mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String
+    },
     email: {
         type: String,
         required: true,
@@ -45,7 +52,7 @@ userSchema.methods.toJSON = function () {
     var user = this;
     var userObject = user.toObject();
 
-    return _.pick(userObject, ['_id', 'email']);
+    return _.pick(userObject, ['_id', 'email', 'firstName']);
 }
 
 //instance method(applicable to each model document) to generate token with user id and secret text
