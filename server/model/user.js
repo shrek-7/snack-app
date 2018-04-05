@@ -31,6 +31,13 @@ var userSchema = mongoose.Schema({
         required: true,
         minlength: 6
     },
+    upvotedFoodItem: {
+        type: String
+    },
+    isAdmin: {
+        type: Boolean,
+        required: true
+    },
     tokens: [{
         access: {
             type: String,
@@ -52,7 +59,7 @@ userSchema.methods.toJSON = function () {
     var user = this;
     var userObject = user.toObject();
 
-    return _.pick(userObject, ['_id', 'email', 'firstName']);
+    return _.pick(userObject, ['_id', 'email', 'firstName', 'upvotedFoodItem', 'isAdmin']);
 }
 
 //instance method(applicable to each model document) to generate token with user id and secret text
@@ -119,7 +126,7 @@ userSchema.statics.findByCredentials = function (email, password) {
     })
 }
 
-//to be executed before every save operation in mongodb
+//to be executed before every save operation in mongodb on User model
 userSchema.pre('save', function (next) {
     var user = this;
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
+import { connect } from 'react-redux';
 
 import ItemTile from './components/item-tile';
 import DrinksTile from './components/drinks-tile';
@@ -17,15 +18,21 @@ import carls from '../../../../assets/carlsberg.jpeg';
 import './main-page.css';
 
 
-export default class MainPage extends Component {
+class MainPage extends Component {
   constructor(props){
     super(props)
     this.state={
       data:[
         {name:"Dominoes"},{name:"Pizza Hut"},{name:"MacDonalds"}
       ],
-      drinks: [{src:bud,name:"budweiser magnum"},{src:biraW,name:"bira white"},{src:carls,name:"Carlsberg elephant"}]
+      drinks: [{src:bud,name:"budweiser magnum"},{src:biraW,name:"bira white"},{src:carls,name:"Carlsberg elephant"}],
+      userInfo: {}
     }
+
+    this.fetchFoodItems = this.fetchFoodItems.bind(this);
+    this.fetchDrinkItems = this.fetchDrinkItems.bind(this);
+    this.fetchUserInfo = this.fetchUserInfo.bind(this);
+
     this.renderTile=this.renderTile.bind(this);
     this.renderDrinks=this.renderDrinks.bind(this);
     this.scrollToDrinks=this.scrollToDrinks.bind(this);
@@ -33,24 +40,55 @@ export default class MainPage extends Component {
   }
   componentDidMount(){
     //make api call
+    this.fetchFoodItems();
+    this.fetchDrinkItems();
+    this.fetchUserInfo();
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.props=nextProps;
+  }
+
+  //function to fetch food items
+  fetchFoodItems(){
     axios.get('/api/food').then((defs)=>{
-      console.log("hello");
-      this.setState({data:[...this.state.data,...defs.data]});
+      this.setState({data:[...defs.data]});
     }).catch((error) => {
       console.log(error);
     });
+  }
 
+  //function to fetch drink items
+  fetchDrinkItems(){
     axios.get('/api/drinks').then((defs)=>{
       this.setState({drinks:[...this.state.drinks,defs.data]});
     }).catch((error) => {
       console.log(error);
     })
   }
+
+  //function to fetch user information
+  fetchUserInfo(){
+    axios.get('/api/user/me', { headers: { "x-auth": this.props.token } }).then((defs)=>{
+      this.setState({userInfo: defs.data})
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   renderTile(){
     return(
       this.state.data.map((item,index)=> {
         return(
-          <ItemTile key={index} data={item} />
+          <ItemTile
+            key={index}
+            data={item}
+            reRenderFoodItems = {() => {
+              this.fetchFoodItems()
+              this.fetchUserInfo()
+            }}
+            userInfo = {this.state.userInfo}
+          />
         );
       })
     );
@@ -104,3 +142,11 @@ export default class MainPage extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    token: state.token
+  };
+}
+
+export default connect(mapStateToProps, { })(MainPage);

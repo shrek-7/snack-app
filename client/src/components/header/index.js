@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
@@ -13,7 +14,7 @@ class Header extends Component {
   constructor(){
     super();
     this.state = {
-      name: '',
+      user: {}
     }
 
     this.logAction = this.logAction.bind(this);
@@ -24,7 +25,7 @@ class Header extends Component {
     if(this.props.token){
       let token = this.props.token;
       axios.get('/api/user/me', { headers: { "x-auth": token } }).then((defs)=>{
-        this.setState({name: defs.data.firstName})
+        this.setState({user: defs.data})
       }).catch((error) => {
         console.log(error);
       });
@@ -37,7 +38,7 @@ class Header extends Component {
       let token = this.props.token;
       axios.delete('/api/user/logout', { headers: { "x-auth": token } }).then((defs)=>{
         this.props.deleteToken();
-        this.setState({name: ''});
+        this.setState({user: {}});
       }).catch((error) => {
         console.log(error);
       });
@@ -51,7 +52,7 @@ class Header extends Component {
     return (
         <header id="header" className="snack-header">
             <div className="snack-header__user-text">
-              {this.state.name === '' ? "Hello Rafter" : `Hi ${this.state.name}`}
+              {Object.keys(this.state.user).length === 0 ? "Hello Rafter" : `Hi ${this.state.user.firstName}`}
             </div>
             <div className="snack-header--text">
               <span>I live to eat, you should try it too.</span>
@@ -60,6 +61,15 @@ class Header extends Component {
             <div onClick={this.logAction} className="snack-header__log-text">
               {this.props.token ? "Logout" : "Login"}
             </div>
+            {this.state.user.isAdmin &&
+              (
+                <Link to={{pathname: '/addItem'}}>
+                  <div className="snack-header__add-item">
+                    Add item
+                  </div>
+                </Link>
+              )
+            }
         </header>
     );
   }

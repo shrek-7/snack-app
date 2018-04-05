@@ -13,6 +13,7 @@ var {authenticate} = require('./../middleware/authenticate');
 //registering the user for first time
 router.post('/', function(req, res){
     var body = _.pick(req.body, ['email', 'password', 'firstName', 'lastName']);
+    body.isAdmin = false;
     var user = new User(body);
 
     user.save().then(() => {
