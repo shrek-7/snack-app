@@ -1,0 +1,180 @@
+.login-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#FFD180, #FF8A80);
+    position: relative;
+}
+
+.login__wrap {
+    /* border: 1px solid grey; */
+    /* background-color: #fff; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    /* box-shadow: 2px 2px 7px #888888; */
+}
+
+.email-wrap,
+.password-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 25px 10px;
+    min-height: 40px;
+    align-items: center;
+    font-family: 'Orbitron';
+    font-size: 14px;
+}
+
+.login__wrap input {
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: cursive;
+    padding-left: 5px;
+}
+
+.login-icon {
+    height: 60px;
+    width: 60px;
+    transition: all 2s ease;
+    position: absolute;
+}
+
+.login-icon:hover {
+    transform: rotate(360deg);
+}
+
+.burger {
+    transform: rotate(-20deg);
+    top: 10%;
+    left: 15%;
+}
+
+.wine {
+    bottom: 10%;
+    right: 10%;
+    transform: rotate(20deg);
+}
+
+.popcorn {
+    top: 45%;
+    left: 30%;
+    transform: rotate(10deg);
+}
+
+.truck {
+    top: 89.5vh;
+    left: -80px;
+    height: 80px;
+    width: 80px;
+    transition: all 1s ease;
+    position: absolute;
+}
+
+.pizza {
+    top: 10%;
+    left: 70%;
+}
+
+.roll {
+    bottom: 15%;
+    left: 20%;
+    transform: rotate(-10deg);
+}
+
+.doughnut {
+    top: 45%;
+    left: 80%;
+    transform: rotate(-10deg);
+}
+
+.cake {
+    top: 20vh;
+    left: 40%;
+}
+
+.beer {
+    bottom: 25%;
+    right: 35%;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+}
+
+.fall {
+    transform: rotate(330deg);
+    top: 90vh;
+}
+
+.shake_effect {
+    animation: shake 0.6s;
+}
+
+.catch-burger {
+    left: 15%;
+}
+
+.catch-cake {
+    left: 40%;
+}
+
+.catch-doughnut {
+    left: 80%;
+}
+
+.catch-popcorn {
+    left: 30%;
+}
+
+.catch-pizza {
+    left: 70%;
+}
+
+.rotate {
+    animation: rotate 2s infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-10px, -10px, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(10px, 10px, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-10px, -10px, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(10px, 10px, 0);
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .pizza {
+        right: 10%;
+    }
+    .cake {
+        top: 30%;
+    }
+    .fall {
+        transform: rotate(330deg);
+        top: 90vh;
+    }
+}

@@ -90,7 +90,6 @@ button:focus {
 }
 
 button:hover {
-    padding: 6px 17px;
     border-color: greenyellow;
 }
 
@@ -108,8 +107,10 @@ button:hover {
     } */
 }
 
+
 /* styling for all the invoke register classes */
-.invoke-register{
+
+.invoke-register {
     position: fixed;
     left: 0;
     top: 0;
