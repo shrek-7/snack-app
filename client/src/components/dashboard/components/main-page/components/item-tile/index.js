@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 import './item-tile.css';
 
@@ -15,13 +16,28 @@ class ItemTile extends Component{
         this.upvoteItem = this.upvoteItem.bind(this);
         this.base10_to_base64 = this._arrayBufferToBase64.bind(this);
     }
+
     componentWillReceiveProps(nextProps){
         this.props=nextProps;
     }
 
     upvoteItem(){
         if(this.props.token){
-            console.log("post request");
+            axios.put(
+                '/api/food/upvote',
+                {
+                    id: this.props.data._id
+                },
+                {
+                    headers: { 'x-auth': this.props.token }
+                }
+            )
+            .then(() => {
+                this.props.reRenderFoodItems();
+            })
+            .catch((e) => {
+                
+            });
         }
         else{
             this.setState({invokeRegister: true});
@@ -57,9 +73,21 @@ class ItemTile extends Component{
             </div>
             <div className="tile__heading">
                <div>{this.props.data.name}</div>
-               <div onClick={this.upvoteItem}>
-                    <button>upvote</button>
-               </div>
+               {
+                   this.props.data._id === this.props.userInfo.upvotedFoodItem ?
+                   (
+                    <div>
+                        <button>upvoted</button>
+                    </div>
+                   )
+                   :
+                   (
+                    <div onClick={this.upvoteItem}>
+                        <button>upvote</button>
+                    </div>
+                   )
+               }
+               
             </div>
             <div className="tile__description">
                 <i className="material-icons favorite">thumb_up</i>
@@ -74,7 +102,7 @@ class ItemTile extends Component{
 function mapStateToProps(state) {
     return {
         token: state.token
-  };
+    };
 }
 
 export default connect(mapStateToProps, { })(ItemTile);

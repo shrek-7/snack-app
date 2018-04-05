@@ -4,7 +4,6 @@
 const mongoose = require('mongoose');
 
 var foodSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     name: {
         type: String,
         require: true
