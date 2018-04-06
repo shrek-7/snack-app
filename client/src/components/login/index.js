@@ -108,6 +108,10 @@ class Login extends Component {
     render() {
         return (
             <div className="login login-container">
+                <div className="login-logo">
+                    <div className="logo-name">snack-app</div>
+                    <div className="logo-tagline">we live to eat</div>
+                </div>
                 <img className="login-icon burger" src={burger} alt=""/>
                 <img className="login-icon roll" src={roll} alt=""/>
                 <img className="login-icon pizza" src={pizza} alt=""/>

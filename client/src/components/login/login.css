@@ -21,8 +21,6 @@
 
 .email-wrap,
 .password-wrap {
-    display: flex;
-    justify-content: space-between;
     width: 100%;
     margin: 25px 10px;
     min-height: 40px;
@@ -32,11 +30,13 @@
 }
 
 .login__wrap input {
-    height: 25px;
+    height: 30px;
     border: 1px solid black;
     border-radius: 5px;
     font-family: cursive;
     padding-left: 5px;
+    margin-top: 10px;
+    width: 100%;
 }
 
 .login-icon {
@@ -140,6 +140,25 @@
     animation: rotate 2s infinite;
 }
 
+.login-logo {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+}
+
+.logo-name {
+    color: #000;
+    font-weight: bold;
+    font-family: 'Orbitron';
+    font-size: 16px;
+}
+
+.logo-tagline {
+    font-size: 10px;
+    font-weight: normal;
+    font-family: 'Orbitron';
+}
+
 @keyframes rotate {
     100% {
         transform: rotate(360deg);
@@ -166,15 +185,25 @@
     }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 500px) {
     .pizza {
         right: 10%;
     }
     .cake {
-        top: 30%;
+        top: 20%;
     }
     .fall {
         transform: rotate(330deg);
         top: 90vh;
+    }
+    .beer {
+        right: 30%;
+        bottom: 23%;
+    }
+    .popcorn {
+        left: 10%;
+    }
+    .catch-popcorn {
+        left: 10%;
     }
 }
